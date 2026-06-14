@@ -1,0 +1,27 @@
+{
+  "name": "2-معدل-توقيت-pdf",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npx -y shx mkdir -p public && npx -y shx cp dist/index.html public/offline-app.html",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/tajawal": "^5.2.7",
+    "lucide-react": "^0.562.0",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.3.1",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}

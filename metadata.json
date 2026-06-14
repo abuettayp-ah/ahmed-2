@@ -1,0 +1,6 @@
+{
+  "name": "معدل توقيت PDF (مستقل - بدون انترنت)",
+  "description": "أداة لتعديل توقيت التعليقات والملاحظات في ملفات PDF وتعمل دون اتصال بالإنترنت.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
