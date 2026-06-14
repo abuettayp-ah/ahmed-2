@@ -14,7 +14,6 @@ export default function App() {
   
   const [isDragging, setIsDragging] = useState(false);
   const [status, setStatus] = useState<ProcessingStatus>({ type: 'idle' });
-  const [isDownloadingOffline, setIsDownloadingOffline] = useState(false);
   
   // Extracted Metadata
   const [metadata, setMetadata] = useState<PdfMetadata>({ authors: [], dates: [], annotations: [] });
@@ -300,35 +299,8 @@ export default function App() {
           <div className="hidden sm:flex items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
               <ShieldCheck size={16} className="text-primary-500" />
-              <span>آمن ويعمل محلياً</span>
+              <span title="يعمل بالكامل على جهازك دون إرسال ملفات للإنترنت. يمكنك تثبيت التطبيق من المتصفح ليعمل بدون اتصال بالشبكة">آمن ويعمل محلياً (يدعم وضع عدم الاتصال)</span>
             </div>
-            <button 
-              onClick={async () => {
-                if (isDownloadingOffline) return;
-                setIsDownloadingOffline(true);
-                try {
-                  const res = await fetch('/offline-app.html');
-                  const text = await res.text();
-                  const blob = new Blob([text], { type: 'text/html' });
-                  const url = URL.createObjectURL(blob);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = 'pdf-time-editor-offline.html';
-                  a.click();
-                  URL.revokeObjectURL(url);
-                } catch(e) {
-                  console.error(e);
-                  alert('حدث خطأ أثناء تحميل الملف');
-                } finally {
-                  setIsDownloadingOffline(false);
-                }
-              }}
-              className="flex items-center gap-2 text-sm bg-primary-600 hover:bg-primary-700 text-white px-4 py-1.5 rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={isDownloadingOffline}
-            >
-              <Download size={16} />
-              <span>{isDownloadingOffline ? 'جاري التجهيز...' : 'تنزيل التطبيق لجهازك'}</span>
-            </button>
           </div>
         </div>
       </header>
